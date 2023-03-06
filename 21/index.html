@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>剪刀石头布游戏</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="title">剪刀石头布游戏</div>
+      <div>
+        <button id="rechargeBtn" class="button">充值</button>
+        <span class="balance" id="balance"></span>
+      </div>
+    </header>
+    <div class="container">
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 id="resultTitle"></h2>
+            <span class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="player">
+              <h3>你出的是</h3>
+              <div id="playerChoice"></div>
+            </div>
+            <div class="computer">
+              <h3>电脑出的是</h3>
+              <div id="computerChoice"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <h3 id="result"></h3>
+          </div>
+        </div>
+      </div>
+      <div class="game">
+        <div class="choice">
+          <button id="rockBtn" class="button choice-button" data-choice="rock">
+            ✊🏻
+          </button>
+          <button
+            id="scissorsBtn"
+            class="button choice-button"
+            data-choice="scissors"
+          >
+            ✌🏻
+          </button>
+          <button
+            id="paperBtn"
+            class="button choice-button"
+            data-choice="paper"
+          >
+            ✋🏻
+          </button>
+        </div>
+        <form>
+          <div class="Amount">
+            <label for="betAmount">下注金额：</label>
+            <input
+              type="number"
+              id="betAmount"
+              name="betAmount"
+              min="1"
+              value="1"
+              required
+            />
+          </div>
+          <button id="startBtn" class="button">开始游戏</button>
+        </form>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

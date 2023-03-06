@@ -1,0 +1,316 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a[href^="tel"],
+a[href^="mailto"] {
+  color: inherit;
+  text-decoration: none;
+  pointer-events: none;
+  cursor: default;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  color: #444;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  z-index: 1;
+}
+
+main {
+  flex: 1;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+nav button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+nav h1 {
+  font-size: 24px;
+}
+
+#offcanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #f8f8f8;
+  padding: 0px;
+  transform: translateX(-260px);
+  transition: transform 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.notransition {
+  transition: none !important;
+}
+
+#offcanvas.open {
+  transform: translateX(0);
+}
+
+.offcanvas-header {
+  background-color: #333;
+  display: flex;
+  padding: 20px;
+  height: 60px;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.offcanvas-header h2 {
+  margin: 0;
+}
+
+#offcanvas h2 {
+  color: #f8f8f8;
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#offcanvas ul {
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+}
+
+#offcanvas ul li {
+  margin-bottom: 24px;
+}
+
+#offcanvas ul li a {
+  font-weight: 900;
+  font-size: 20px;
+  color: rgba(51, 51, 51, 0.5);
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+#offcanvas ul li a::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+#offcanvas ul li a:hover::before {
+  width: 100%;
+}
+
+#offcanvas ul li a.active {
+  color: #555;
+}
+
+#offcanvas ul li a.active::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+}
+#offcanvas ul li a:hover {
+  color: #555;
+}
+
+#offcanvas-close-button {
+  background-color: transparent;
+  color: #999;
+  border: none;
+  padding: 0;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+
+#offcanvas-close-button:hover {
+  color: #444;
+}
+
+#offcanvas-close-button:before {
+  content: "\00d7";
+}
+
+#offcanvas-overlay {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* 背景颜色为透明 */
+  opacity: 0;
+  z-index: 1;
+  transition: background-color 1s ease-in-out, opacity 1s ease-in-out; /* 添加颜色变化的动画效果 */
+}
+
+#offcanvas-overlay.close {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#offcanvas-overlay.open {
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  /* 在打开 Offcanvas 时，将背景颜色设置为半透明黑色 */
+  pointer-events: auto;
+}
+
+#random-card {
+  flex-direction: column;
+  display: flex;
+  max-width: 1200px;
+
+  height: 78%;
+  margin: 20px auto;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+#random-card h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+#random-card p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+#random-card button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#random-card button:hover {
+  background-color: rgb(32, 32, 32);
+}
+
+#random-card button:focus {
+  background-color: rgb(0, 0, 0);
+}
+#random-result {
+  height: 20%;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.footer {
+  background-color: #222;
+  color: #fff;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  padding: 20px 20px;
+}
+
+.footer-content h2 {
+  margin-bottom: 20px;
+}
+
+.contact ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contact li {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.contact li i {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-bottom {
+  background-color: #111;
+  padding: 10px 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    font-size: 12px;
+  }
+  .footer h2 {
+    margin: 10px 0px;
+    font-size: 20px;
+  }
+
+  .footer li {
+    font-size: 14px;
+  }
+}

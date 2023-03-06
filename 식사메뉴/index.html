@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#333333" />
+    <meta id="myMetaTag" name="theme-color" content="#333333" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>오늘 뭐 먹지?</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="modal.css" />
+
+    <style>
+      * {
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <button id="offcanvas-button" style="font-weight: bold">
+          &#9776; MENU
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <div id="offcanvas">
+        <div class="offcanvas-header">
+          <button id="offcanvas-close-button"></button>
+          <h2>Navbar</h2>
+        </div>
+        <ul>
+          <li><a href="#">메뉴추가</a></li>
+          <li><a href="#">메뉴편집</a></li>
+        </ul>
+      </div>
+      <div id="offcanvas-overlay" class="close"></div>
+
+      <div id="random-card">
+        <h2>오늘 뭐 먹지?</h2>
+        <p id="random-result">
+          아래 버튼을 클릭하여 무작위로 메뉴를 선택합니다.
+        </p>
+
+        <button id="random-button">메뉴추첨</button>
+      </div>
+
+      <!-- 弹窗部分 -->
+      <div id="modal-container" style="display: none" class="modal-container">
+        <div class="modal">
+          <div class="modal-header">
+            <button id="modal-close-button" class="modal-close-button">
+              ×
+            </button>
+
+            <h2>메뉴추가</h2>
+          </div>
+          <form>
+            <label for="name-input">메뉴:</label>
+            <input
+              type="text"
+              id="name-input"
+              name="name"
+              autocomplete="off"
+              required
+            /><br />
+
+            <label for="price-input">가격:</label>
+            <input
+              type="number"
+              id="price-input"
+              name="price"
+              min="0"
+              autocomplete="off"
+              style="-moz-appearance: textfield"
+              required
+            />
+
+            <br />
+
+            <div class="rating">
+              <label for="rating-input">평점:</label>
+              <div class="stars">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+              </div>
+            </div>
+            <input
+              type="hidden"
+              id="rating-input"
+              name="rating"
+              required
+            /><br />
+            <button type="submit">등록</button>
+          </form>
+        </div>
+      </div>
+      <!---->
+
+      <!-- 弹窗部分 -->
+      <div
+        id="delete-modal-container"
+        style="display: none"
+        class="modal-container"
+      >
+        <div class="modal">
+          <div class="modal-header">
+            <button id="delete-modal-close-button" class="modal-close-button">
+              &times;
+            </button>
+            <h2>메뉴편집</h2>
+          </div>
+          <ul id="menu-list"></ul>
+        </div>
+      </div>
+      <!---->
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section contact">
+          <h2>Contact us.</h2>
+          <ul>
+            <li><i class="fas fa-phone"></i> 010-6675-0301</li>
+            <li><i class="fas fa-envelope"></i>mooneunjun@icloud.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2023 오늘 뭐 먹지? | Toy project by Mooneunjun
+      </div>
+    </footer>
+
+    <script>
+      // 禁止双击放大
+      var lastTouchEnd = 0;
+      document.addEventListener("touchstart", function (event) {
+        if (event.touches.length > 1) {
+          event.preventDefault();
+        }
+      });
+      document.addEventListener(
+        "touchend",
+        function (event) {
+          var now = new Date().getTime();
+          if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+          }
+          lastTouchEnd = now;
+        },
+        false
+      );
+    </script>
+    <script src="script.js"></script>
+    <script src="random.js"></script>
+    <script src="modal.js"></script>
+    <script src="modal2.js"></script>
+  </body>
+</html>
